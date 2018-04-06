@@ -18,9 +18,9 @@ guard let input = rawInput else {
 }
 
 // Print out the input provided
-print("You said:")
-print(rawInput) // Optional String
-print(input) //Non-Optional
+//print("You said:")
+//print(rawInput) // Optional String
+//print(input) //Non-Optional
 
 var happyFace = 0
 var sadFace = 0
@@ -51,7 +51,7 @@ for individualCharacter in input {
     }  else if individualCharacter == "☺️" {
         // Track happy
       sadFace += 1
-    } else if individualCharacter == "😄" {
+    } else if individualCharacter == "😊" {
         // Track happy
         happyFace += 1
     }
@@ -60,10 +60,13 @@ for individualCharacter in input {
 // Tell the user "happy", "sad" or "unsure" based on counts above
 
 if happyFace > sadFace {
-    print("Happy")
+    print("happy")
 } else if sadFace > happyFace {
-    print("Sad")
+    print("sad")
+} else if happyFace == 0 && sadFace == 0 {
+    print ("none")
+    
 } else {
-    print("Unsure")
+    print("unsure")
 }
 
