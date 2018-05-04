@@ -1,20 +1,30 @@
-//
-//  main.swift
-//  HappyOrSad
-//
-//  Created by Gordon, Russell on 2018-04-04.
-//  Copyright © 2018 Gordon, Russell. All rights reserved.
-//
 
 import Foundation
 
-// Get the user input
-var rawInput = readLine()
+//Loop forever until valid input is given
 
-// Make sure input was given (create a string from the string)
-guard let input = rawInput else {
-    //Error
-    exit(9)
+var validInput = ""
+
+while 1==1 {
+
+// Unwrap the given input form usem make sure it is not nil
+guard let givenInput = readLine() else {
+    //Tell the user there was a problem
+    print("Please enter a string with at least 1 character and no more then 255 characters.")
+    
+    // go to the next interation of the loop
+    continue
+}
+
+// is the string the correct length?
+if givenInput.count < 1 || givenInput.count > 255 {
+    
+}
+    
+    //If we got this far, input is guaranteed to be valid
+    validInput = givenInput
+    
+break // Very Important - this stops the while loop
 }
 
 // Print out the input provided
@@ -22,51 +32,39 @@ guard let input = rawInput else {
 //print(rawInput) // Optional String
 //print(input) //Non-Optional
 
-var happyFace = 0
-var sadFace = 0
+
+var happyCount = 0
+var sadCount = 0
 // process- inspect each charachter
-for individualCharacter in input {
+for individualCharacter in validInput {
     //Debug
     print(individualCharacter)
     
     // Catogroize each character
-    if individualCharacter == "😃" {
-        // Track a Happy
-        happyFace += 1
-    } else if individualCharacter == "☹️" {
-        //track a sad
-        sadFace += 1
-    } else if individualCharacter == "🙂" {
-        // Track happy
-        happyFace += 1
-    } else if individualCharacter == "😕" {
-        //Track a sad
-        sadFace += 1
-    } else if individualCharacter == "😔" {
-//Track a sad
-         sadFace += 1
-    }  else if individualCharacter == "🙁" {
-        //Track a sad
-        sadFace += 1
-    }  else if individualCharacter == "☺️" {
-        // Track happy
-      sadFace += 1
-    } else if individualCharacter == "😊" {
-        // Track happy
-        happyFace += 1
+    
+    switch individualCharacter {
+    case "😃", "🙂", "☺️", "😊" :
+        happyCount += 1
+    case "😕", "😕", "😔", "🙁":
+        sadCount += 1
+    default:
+        
+        break //nothing
     }
-}
+    
+ 
 //Output
 // Tell the user "happy", "sad" or "unsure" based on counts above
 
-if happyFace > sadFace {
+if happyCount > sadCount {
     print("happy")
-} else if sadFace > happyFace {
+} else if sadCount > happyCount {
     print("sad")
-} else if happyFace == 0 && sadFace == 0 {
+} else if happyCount == 0 && sadCount == 0 {
     print ("none")
     
 } else {
     print("unsure")
 }
 
+}
